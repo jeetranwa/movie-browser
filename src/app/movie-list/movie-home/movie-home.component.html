@@ -1,0 +1,30 @@
+<app-movie-filters *ngIf="path == 'home'" (onApplyFilter)="ApplyFilters($event)"></app-movie-filters>
+<div class="bg-[#222a31]" [ngClass]="{'hidden': loading}" *ngIf="movieList">
+  <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
+    <div class="" *ngFor="let movie of movieList">
+      <div>
+        <app-movie-card (favoriteChanged)="favoriteChanged($event)" [movie]="movie"></app-movie-card>
+      </div>
+    </div>
+  </div>
+  <div class="flex mt-[50px] justify-center"  *ngIf="path == 'home' && movieList?.length !== 0">
+    <button [disabled]="options.page == 1" [ngClass]="{'!cursor-not-allowed !bg-[#7f7f7f] !border-[#7f7f7f] hover:text-gray-500': options.page == 1}" (click)="changePage(-1)" class="cursor-pointer w-[120px] flex items-center justify-center px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+      <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M13 5H1m0 0 4 4M1 5l4-4" />
+      </svg>
+      Previous
+    </button>
+    <button [disabled]="options.page == totalPages" [ngClass]="{'!cursor-not-allowed !bg-[#7f7f7f] !border-[#7f7f7f] hover:text-gray-500': options.page == totalPages}" (click)="changePage(1)" class="cursor-pointer w-[120px] flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+      Next
+      <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 5h12m0 0L9 1m4 4L9 9" />
+      </svg>
+    </button>
+  </div>
+</div>
+<div class="bg-[#222a31] min-h-[100vh] text-center text-[#ffffff] text-[24px] flex items-center justify-center" *ngIf="movieList?.length == 0">{{path === 'home' ? 'No Movie Found!!': 'No Favorite Movies Found!!'}}</div>
+<app-movie-list-skeleton-loader *ngIf="loading"></app-movie-list-skeleton-loader>

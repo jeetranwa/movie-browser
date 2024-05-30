@@ -1,0 +1,11 @@
+<div class="px-[15px] my-[20px] w-full relative" *ngIf="movie">
+  <div class="rounded-[10px] border-solid border-[1px] border-[#7f7f7f] w-full h-full">
+    <img class="rounded-[10px] md:h-[700px] h-[600px] lg:h-[600px] xl:h-[500px] 2xl:h-[400px] w-full" [src]="imageUrl+'original'+movie.poster_path" alt="">
+  </div>
+  <div class="text-[18px] text-[#ffffff] p-[10px]">
+    {{movie.title}} ({{movie.release_date | date:'yyyy'}})
+  </div>
+  <div (click)="favorite(movie, true)" class="cursor-pointer absolute right-[25px] top-[5px]" *ngIf="!isFavorite"><i class="fa-regular fa-heart cursor-pointer"></i></div>
+  <div (click)="favorite(movie, false)" class="cursor-pointer absolute right-[25px] top-[5px] text-[red]" *ngIf="isFavorite"><i class="fa-solid fa-heart cursor-pointer"></i></div>
+  <div class="absolute text-[12px] w-[30px] text-center top-[-9px] left-1/2 translate-x-[-50%] rounded-full text-[#fff] bg-[#ffb109]">{{movie.vote_average.toFixed(1)}}</div>
+</div>

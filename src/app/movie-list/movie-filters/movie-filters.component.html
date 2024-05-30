@@ -1,0 +1,46 @@
+<div class="flex px-[20px] py-[20px] bg-[#222a31] gap-4 flex-wrap">
+  <div class="flex w-[100%] md:w-[45%] lg:w-[30%] xl:w-[30%] 2xl:w-[30%]">
+    <div class="w-[20%] items-center flex text-[#ffffff] font-semibold text-[14px] md:text-[14px] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">Genres:</div>
+    <div class="w-[80%]">
+      <select [(ngModel)]="filters.genre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected>Choose genres</option>
+        <option [value]="genre.id" *ngFor="let genre of genres">{{genre.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="flex w-[100%] md:w-[45%] lg:w-[30%] xl:w-[30%] 2xl:w-[30%]">
+    <div class="w-[25%] items-center flex text-[#ffffff] font-semibold text-[14px] md:text-[14px] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">Release year:</div>
+    <div class="w-[75%] flex gap-2">
+      <div class="flex w-1/2">
+        <div class="w-[100%]">
+          <input [(ngModel)]="filters.releaseDate.from" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="FROM: YYYY" />
+        </div>
+      </div>
+      <div class="flex w-1/2">
+        <div class="w-[100%]">
+          <input [(ngModel)]="filters.releaseDate.to" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="TO: YYYY" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex w-[100%] md:w-[45%] lg:w-[30%] xl:w-[30%] 2xl:w-[30%]">
+    <div class="w-[25%] items-center flex text-[#ffffff] font-semibold text-[14px] md:text-[14px] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">Rating:</div>
+    <div class="w-[75%] flex gap-2">
+      <div class="flex w-1/2">
+        <div class="w-[100%]">
+          <input [(ngModel)]="filters.rating.from" min="1" max="10" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="FROM: 1-10" />
+        </div>
+      </div>
+      <div class="flex w-1/2">
+        <div class="w-[100%]">
+          <input [(ngModel)]="filters.rating.to" min="1" max="10" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="TO: 1-10" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-[100%] md:w-[45%] lg:w-[5%] xl:w-[5%] 2xl:w-[5%]">
+    <button (click)="applyFilter()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+      Apply
+    </button>
+  </div>
+</div>

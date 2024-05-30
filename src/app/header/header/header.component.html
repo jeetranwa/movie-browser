@@ -1,0 +1,8 @@
+<div class="flex align-middle flex-wrap min-h-[75px]">
+  <div class="text-[30px] font-bold items-center flex ml-[20px]">Movies</div>
+  <div (click)="navigate('home')" class="cursor-pointer text-[16px] font-semibold items-center flex ml-[30px]">Home</div>
+  <div (click)="navigate('favorite')" class="cursor-pointer text-[16px] font-semibold items-center flex ml-[20px]">Favorite Movies</div>
+  <div  *ngIf="path == 'home'" class="min-w-[300px] w-[100%] lg:w-max pl-[20px] py-[10px] ml-auto mr-[20px]">
+    <app-search-movies></app-search-movies>
+  </div>
+</div>
